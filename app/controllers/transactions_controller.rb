@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
 				description: current_user.email)
 			@sale = book.sales.create!(
 				buyer_email: current_user.email)
-			redirect_to_pickup_url(guid: @sale.guid)
+			redirect_to pickup_url(guid: @sale.guid)
 		rescue Stripe::CardError => e
 			@error = e
 			redirect_to book_path(book), notice: @error
